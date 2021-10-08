@@ -1,0 +1,53 @@
+version: "3"
+services:
+  mysql-master:
+    build: mysql-master 
+    env_file:
+      - mysql-master/master.env
+    networks:
+      - dbnet
+    container_name: jx-master
+  mysql-slave:
+    build: mysql-slave
+    env_file:
+      - mysql-slave/slave.env
+    networks:
+      - dbnet
+    container_name: jx-slave
+  mysql-proxy:
+    build: mysql-proxy
+    env_file:
+      - mysql-proxy/proxy.env
+    networks:
+      - dbnet
+    container_name: jx-proxy
+  apache2:
+    build: apache-cluster
+    env_file:
+      - apache-cluster/cluster.env
+    networks:
+      - appnet
+      - dbnet
+    container_name: jx-apache-2
+  apache1:
+    build: apache-cluster
+    env_file:
+      - apache-cluster/cluster.env
+    networks:
+      - appnet
+      - dbnet
+    container_name: jx-apache-1
+  nginx-proxy:
+    build: nginx-proxy/
+    ports:
+      - 9001:80
+    env_file:
+      - nginx-proxy/nginx.env
+    networks:
+      - appnet
+    container_name: jx-nginx
+networks:
+  appnet:
+    driver: bridge
+  dbnet:
+    driver: bridge
