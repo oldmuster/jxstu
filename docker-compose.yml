@@ -1,53 +1,113 @@
+# docker-compose版本
 version: "3"
+# 定义多个服务
 services:
   mysql-master:
+    # 去mysql-master目录构建镜像
     build: mysql-master 
+    # 启动容器的启动变量文件
     env_file:
       - mysql-master/master.env
+    # 容器所在的网络
     networks:
       - dbnet
+    # 容器名字
     container_name: jx-master
   mysql-slave:
+    # 去mysql-slave目录构建镜像
     build: mysql-slave
+    # 启动容器的启动变量文件
     env_file:
       - mysql-slave/slave.env
+    # 容器所在的网络
     networks:
       - dbnet
+    # 容器名字
     container_name: jx-slave
   mysql-proxy:
+    # 去mysql-proxy目录构建镜像
     build: mysql-proxy
+    # 启动容器的启动变量文件
     env_file:
       - mysql-proxy/proxy.env
+    # 容器所在的网络
     networks:
       - dbnet
+    # 容器名字
     container_name: jx-proxy
   apache2:
+    # 去apache-cluster目录构建镜像
     build: apache-cluster
+    # 启动容器的启动变量文件
     env_file:
       - apache-cluster/cluster.env
+    # 容器所在的网络
     networks:
       - appnet
       - dbnet
+    # 容器名字
     container_name: jx-apache-2
   apache1:
+    # 去apache-cluster目录构建镜像
     build: apache-cluster
+    # 启动容器的启动变量文件
     env_file:
       - apache-cluster/cluster.env
+    # 容器所在的网络
     networks:
       - appnet
       - dbnet
+    # 容器名字
     container_name: jx-apache-1
   nginx-proxy:
-    build: nginx-proxy/
-    ports:
-      - 9001:80
+     # 去nginx-proxy目录构建镜像
+     build: nginx-proxy/
+     # 启动容器的启动变量文件
+     env_file:
+       - nginx-proxy/nginx.env
+     # 容器所在的网络
+     networks:
+       - appnet
+     # 容器名字
+     container_name: jx-nginx
+  web1:
+    build: apache-web
     env_file:
-      - nginx-proxy/nginx.env
+      - apache-web/apache-web.env
     networks:
-      - appnet
-    container_name: jx-nginx
+      - webnet
+    container_name: jx-web-1
+    privileged: true # 开启特权
+  web2:
+    build: apache-web
+    env_file:
+      - apache-web/apache-web.env
+    networks:
+      - webnet
+    container_name: jx-web-2
+    privileged: true # 开启特权
+  web-lvs:
+    build: lvs-web
+    env_file:
+      - lvs-web/lvs-web.env
+    networks:
+      - webnet
+    container_name: jx-web-lvs
+    privileged: true # 开启特权
+  web-client:
+    build: mainpage
+    networks:
+      - webnet
+    container_name: jx-web-client
+# 定义网络
 networks:
-  appnet:
+  webnet:
     driver: bridge
+  # 定义appnet网络
+  appnet:
+    # 网络类型为桥接自动分配网络地址、子网掩码、网关
+    driver: bridge
+  # 定义appnet网络
   dbnet:
+    # 网络类型为桥接自动分配网络地址、子网掩码、网关
     driver: bridge
