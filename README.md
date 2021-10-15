@@ -17,9 +17,8 @@
 
 #### 安装教程
 
-1.  宿主机安装docker、docker-compose、ipvsadm，下载下面地址文件
-2.  http://xpm.cpolar.top/soft/centos7-mysql55.tar.gz
-3.  分别解压centos7-mysql55.tar.gz到apache-cluster、mysql-slave、mysql-master
+1.  宿主机安装docker、docker-compose、ipvsadm，下载文件：http://xpm.cpolar.top/soft/centos7-mysql55.tar.gz
+2.  分别解压centos7-mysql55.tar.gz到apache-cluster、mysql-slave、mysql-master
 
 #### 使用说明
 
