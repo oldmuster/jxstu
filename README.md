@@ -11,6 +11,9 @@
 4.  web区域包含apache和lvs-dr四层负载均衡，实现动静分离
 ![系统架构图](https://images.gitee.com/uploads/images/2021/1015/104531_fe46cdaa_4897809.png "屏幕截图.png")
 
+#### 数据库结构
+1.  数据包含学生、考试、科目、成绩四个实体，其关系如下图所示
+![数据库ER图](https://images.gitee.com/uploads/images/2021/1015/105521_68d1d288_4897809.png "屏幕截图.png")
 
 #### 安装教程
 
