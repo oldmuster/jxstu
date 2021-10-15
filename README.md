@@ -1,15 +1,14 @@
 # jxstu
 
 #### 介绍
-{**简易学生成绩系统，Linux运维培训实战项目**
-项目使用docker+宿主机配置方式搭建
-数据库包含，ER图、多表查询、主从同步，使用mysql5.5搭建
-业务区域包含apache+shell脚本、nginx七层负载均衡、lvs-NAT四层负载均衡
-WEB区域包含apache和lvs-dr四层负载均衡，实现动静分离
+{**简易学生成绩系统，Linux运维培训实战项目，docker+宿主机配合搭建**
 }
 
 #### 软件架构
-软件架构说明
+1.  数据库包含，ER图、多表查询、主从同步，使用mysql5.5搭建
+2.  业务区域包含apache+shell脚本，使用shell脚本实现学生增删改查等业务，还包含nginx七层负载均衡、
+3.  宿主机包含lvs-NAT四层负载均衡，链接webnet和appnet两个区域
+4.  web区域包含apache和lvs-dr四层负载均衡，实现动静分离
 ![系统架构图](https://images.gitee.com/uploads/images/2021/1015/104531_fe46cdaa_4897809.png "屏幕截图.png")
 
 
