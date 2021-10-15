@@ -1,10 +1,9 @@
-# 基于centos:7构建
+# 基于centos:7
 FROM centos:7
 
-# 安装
-RUN yum -y install iproute psmisc net-tools tcpdump ipvsadm
+# 安装lvs和相关工具
+RUN yum -y install ipvsadm iproute psmisc net-tools tcpdump
 
-# 拷贝启动脚本到镜像根目录
+# 定义入口点和启动脚本
 COPY init.sh /
-# 定义开启容器执行启动脚本
 ENTRYPOINT ["bash", "-x", "/init.sh"]
