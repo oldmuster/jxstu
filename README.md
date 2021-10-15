@@ -2,6 +2,7 @@
 
 #### 介绍
 {**简易学生成绩系统，Linux运维培训实战项目**
+项目使用docker+宿主机配置方式搭建
 数据库包含，ER图、多表查询、主从同步，使用mysql5.5搭建
 业务区域包含apache+shell脚本、nginx七层负载均衡、lvs-NAT四层负载均衡
 WEB区域包含apache和lvs-dr四层负载均衡，实现动静分离
