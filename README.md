@@ -13,7 +13,7 @@
 
 #### 数据库结构
 1.  数据包含学生、考试、科目、成绩四个实体，其关系如下图所示
-![数据库ER图](https://images.gitee.com/uploads/images/2021/1015/105521_68d1d288_4897809.png "屏幕截图.png")
+![数据库ER图](https://images.gitee.com/uploads/images/2021/1015/105755_62152acb_4897809.png "屏幕截图.png")
 
 #### 安装教程
 
