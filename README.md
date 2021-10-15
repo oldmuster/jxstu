@@ -9,7 +9,7 @@ WEB区域包含apache和lvs-dr四层负载均衡，实现动静分离
 
 #### 软件架构
 软件架构说明
-![架构图](https://images.gitee.com/uploads/images/2021/1015/103057_ad181a4b_4897809.png "屏幕截图.png")
+![系统架构图](https://images.gitee.com/uploads/images/2021/1015/104531_fe46cdaa_4897809.png "屏幕截图.png")
 
 
 #### 安装教程
